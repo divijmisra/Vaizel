@@ -1,0 +1,32 @@
+import java.util.*;
+import java.text.*;
+import java.time.*;
+import java.util.stream.IntStream;
+
+class GFG {
+	public static void main (String[] args) throws Exception {
+	   Map<Date, Integer> m = new HashMap<Date, Integer>(); 
+
+    DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
+    m.put(new java.sql.Date(dateFormat.parse("03-06-2017").getTime()),10);
+    m.put(new java.sql.Date(dateFormat.parse("02-06-2017").getTime()),20);
+    m.put(new java.sql.Date(dateFormat.parse("03-06-2017").getTime()),30);
+    m.put(new java.sql.Date(dateFormat.parse("15-06-2017").getTime()),50);
+
+
+		String s = "2017-06-03";
+                String d = "2017-06-15";
+
+ LocalDate start = LocalDate.parse(s);
+ LocalDate end = LocalDate.parse(d);
+ HashMap<LocalDate,Integer> totalDates = new HashMap<>();
+  while (!start.isAfter(end)) {
+    
+     totalDates.put(start,m.get(start));
+     start = start.plusDays(1);
+   }
+    System.out.print(totalDates);
+	}
+	
+}
